@@ -24,7 +24,7 @@ function App() {
       <TodoTemplate>
        <TodoInsert onInsert={onInsert}/>
        <TodoList todos={todos}/>
-      </TodoTemplate>
+      </TodoTemplate> 
     </div>
   );
 }
