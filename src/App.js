@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React,{useState,useRef} from 'react';
+import TodoTemplate from './TodoTemplate';
+import TodoInsert from './TodoInsert';
+import TodoList from './TodoList';
 import './App.css';
 
 function App() {
+  const [todos,setTodos] = useState([{id:1,text:'todo1',checked:true},{id:2,text:'todo2',checked:false}]);
+
+  const nextId = useRef(3);
+
+  const onInsert = text =>{
+    const todo ={
+      id:nextId.current,
+      text,
+      checked:false,
+    };
+    setTodos(todos.concat(todo));
+    nextId.current +=1;
+  }
+    
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TodoTemplate>
+       <TodoInsert onInsert={onInsert}/>
+       <TodoList todos={todos}/>
+      </TodoTemplate>
     </div>
   );
 }

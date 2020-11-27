@@ -1,0 +1,14 @@
+.Template {
+  width: 512px;
+  margin: 6rem auto;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.Title {
+  background-color: lightpink;
+  height: 4rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
