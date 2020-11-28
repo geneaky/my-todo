@@ -1,23 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import React,{useState,useRef} from 'react';
+import Header from './Header';
+import PostTemplate from './PostTemplate';
+import PostList from './PostList';
 
 function App() {
+   const [post,setPost] = useState([
+     {
+       id:1,
+       text: "user1 text",
+       img:null,
+     },
+     {
+       id:2,
+       text:"user2 text",
+       img: 'src',
+     }
+   ]);
+
+   let autoId = useRef(3);
+
+   const onPost = ()=>{
+     const autoPost = {
+       id:autoId.current,
+       text: "auto auto",
+       img:null,
+     }
+
+     setInterval(()=>{
+       autoId +=1;
+       if(autoId ===100){
+         clearInterval();
+       }
+       else{
+         setPost(post.concat(autoPost));
+       }
+      },1000)
+
+    }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <PostTemplate onPost={onPost}>
+        <PostList post={post}/>
+      </PostTemplate>
+
     </div>
   );
 }
