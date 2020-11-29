@@ -1,11 +1,8 @@
 import React from 'react';
 
-const PostTemplate = ({children,onPost}) =>{
+const PostTemplate = ({children}) =>{
     return(
         <div>
-            <div>
-                {onPost()}
-            </div>
             {children}
         </div>
     )

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-import React from 'react';
-import TodoBody from './todoBody';
->>>>>>> 655929eb87aff0fe55f749a9293eb880b650439b
 import './App.css';
 import React,{useState,useRef} from 'react';
 import Header from './Header';
@@ -24,7 +19,7 @@ function App() {
      }
    ]);
 
-   let autoId = useRef(3);
+   const autoId = useRef(3);
 
    const onPost = ()=>{
      const autoPost = {
@@ -32,31 +27,18 @@ function App() {
        text: "auto auto",
        img:null,
      }
-
-     setInterval(()=>{
-       autoId +=1;
-       if(autoId ===100){
-         clearInterval();
-       }
-       else{
-         setPost(post.concat(autoPost));
-       }
-      },1000)
-
+     setPost(post.concat(autoPost));
+     autoId.current +=1;
     }
 
 
   return (
     <div className="App">
-<<<<<<< HEAD
       <Header/>
-      <PostTemplate onPost={onPost}>
-        <PostList post={post}/>
+      <PostTemplate>
+        <PostList post={post} onPost={onPost}/>
       </PostTemplate>
 
-=======
-      <TodoBody />
->>>>>>> 655929eb87aff0fe55f749a9293eb880b650439b
     </div>
   );
 }
