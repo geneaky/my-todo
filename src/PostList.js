@@ -2,13 +2,7 @@ import React from 'react';
 import Post from './Post';
 import './PostList.css';
 
-const PostList = ({post,onPost}) =>{
-
-
-
-    for(var i=0; i<100;i++){
-        onPost();
-    }
+const PostList = ({post}) =>{
 
 
     return(
